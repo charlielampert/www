@@ -9,35 +9,168 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <style>
+        @font-face {
+            font-family: "MEPHISTO";
+            src: url("fonts/MEPHISTO.TTF") format("truetype");
+        }
 
+        @font-face {
+            font-family: 'Lato';
+            font-style: normal;
+            font-weight: 400;
+            src: url("fonts/latin-ext.woff2") format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        @font-face {
+            font-family: 'Lato';
+            font-style: normal;
+            font-weight: 400;
+            src: url("fonts/latin.woff2") format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            background-color: black;
+            background-image: url("bg.jpg");
+            background-attachment: fixed;
+            background-size: auto 100%;
+            background-position: center bottom;
+
+            font-family: "Lato";
+            color: #dedede;
+            text-shadow: -1px -1px 0 #666666, 1px -1px 0 #666666, -1px 1px 0 #666666, 1px 1px 0 #666666;
+            font-size: 1.1em;
+        }
+
+        #page {
+            display: grid;
+            grid-template:
+                    35vh
+                    1fr
+                    20px
+                    / 0.1fr 0.5fr 0.5fr 0.1fr;
+
+            grid-template-areas:
+                ". . . ."
+                ". content photo ."
+                ". . . .";
+        }
+
+        @media only screen and (max-width: 700px)  {
+            #page {
+                display: grid;
+                grid-template:
+                    20vh
+                    minmax(70vh, min-content)
+                    min-content
+                    / 1fr;
+
+                grid-template-areas:
+                "."
+                "content"
+                "photo";
+            }
+
+            #content{
+                background-color: #666666;
+                border-radius: 15px;
+
+
+                margin: 15px;
+                padding: 7px;
+
+                background-color: black;
+                opacity: 75%;
+            }
+
+            #content ul,
+            #content ol{
+                margin: 30px;
+            }
+        }
+
+
+
+        #content{
+            grid-area: content;
+            justify-self: center;
+            align-self: center;
+            text-align: center;
+        }
+        #content ul,
+        #content ol{
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        h1 {
+            font-family: 'MEPHISTO';
+            font-size: 3em;
+        }
+
+        #icon {
+            border-radius: 7px;
+        }
+
+        #photo{
+            grid-area: photo;
+            justify-self: center;
+            align-self: center;
+
+            text-align: center;
+        }
+
+        #photo img{
+            width: 100%;
+        }
+
+        #legal {
+            text-align: center;
+            font-size: 0.8em;
+
+            position: fixed;
+            bottom: 0;
+            right: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            background-color: black;
+            opacity: 75%;
+        }
+
+        a{
+            color: gold;
+        }
     </style>
 </head>
 <body>
-<div class="page">
-    <h1>Instructions</h1>
-    <div class="demo">
-        <video src="ShowAndTell.mp4" controls autoplay loop>
-            <p>Please download and watch our <a href="ShowAndTell.mp4">promotional video clip</a></p>
-        </video>
+<div id="page">
+    <div id="content">
+        <img id="icon" src="icon@0.5x.png">
+        <h1>VAXWallet</h1>
+        <p>An easy way for you to identify yourself as vaccinated.</p>
+        <ol>
+            <li>Add the <a href="https://app.vax-wallet.com" target="_blank">AppSite</a> to your desktop or homescreen.</li>
+            <li>Open your new homescreen icon.</li>
+            <li>Use 1234 as the access pin.</li>
+            <li>Enter your vaccine details.</li>
+            <li><span style="display: inline-block; background-color: green; border-radius: 7px; padding-left: 5px; padding-right: 7px;">VERIFY</span> your name via credit card.</li>
+        </ol>
+        <img style="transform: rotate(-15deg); position: relative; top: 50px; margin-bottom: 75px;" src="golden-ticket@0.5x.png">
     </div>
 
-    <ol class="steps">
-        <li>Go to the web version of the app on your phone in mobile safari.</li>
-        <li>Click the mobile safari browser's "send" icon <img src="ios-send-icon.jpg" height="30px">.</li>
-        <li>Swipe up to reveal more options, then choose "Add to Home Screen".</li>
-        <li>Open the app by touching the new icon on your phone's desktop/homescreen. <img src="AppIcon.jpg"></li>
-    </ol>
-
-    <p style="color: red; text-align: center"><u>IMPORTANT</u><br/>Approximately 10,000 copies of this<br>App will be
-        distributed &amp;/or validated.</p>
-
-    <div class="nav">
-        <a href="https://app.vax-wallet.com">
-            <p>Once you know the steps, please click here to proceed.</p>
-        </a>
+    <div id="photo">
+        <img src="phone@1.0.png">
     </div>
 
-
+    <div id="legal">&copy;1984 George Orwell</div>
 </div>
 </body>
 </html>
